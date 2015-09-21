@@ -1,0 +1,43 @@
+{
+  "name": "hashdo-cli",
+  "description": "Development command-line interface to generate and test #Do cards.",
+  "version": "0.1.0",
+  "preferGlobal": true,
+  "author": "HashDo <info@hashdo.com>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "hashdo",
+    "cards",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UXFoundry/hashdo-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/UXFoundry/hashdo-cli/issues"
+  },
+  "dependencies": {
+    "commander": "2.8.1",
+    "cross-spawn-async": "2.0.0",
+    "lodash": "3.10.1",
+    "open": "0.0.5",
+    "yeoman-environment": "1.2.7",
+    "yeoman-generator": "0.20.3"
+  },
+  "devDependencies": {
+  },
+  "subdomain": "hashdo",
+  "domains": [
+    "www.hashdo.com",
+    "*.hashdo.com",
+    "hashdo.com"
+  ],
+  "bin": {
+    "hashdo": "bin/hashdo"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "main": "cli.js"
+}
