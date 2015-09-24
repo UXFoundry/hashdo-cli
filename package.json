@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "commander": "2.8.1",
-    "cross-spawn-async": "2.0.0",
+    "hashdo-web": "*",
     "lodash": "3.10.1",
     "open": "0.0.5",
     "yeoman-environment": "1.2.7",
