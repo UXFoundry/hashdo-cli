@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "commander": "2.8.1",
+    "handlebars": "4.0.3",
     "hashdo-web": "*",
     "lodash": "3.10.1",
     "open": "0.0.5",
