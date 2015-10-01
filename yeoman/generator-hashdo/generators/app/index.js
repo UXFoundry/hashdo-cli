@@ -53,6 +53,6 @@ module.exports = Yeoman.generators.Base.extend({
 
   install: function () {
     // Nothing to install yet.
-    //this.npmInstall();
+    this.npmInstall();
   }
 });
