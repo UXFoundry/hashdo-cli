@@ -40,11 +40,6 @@ By default the web server port is 4000. If something on your system is already u
 
 `hashdo serve --port 8080`
 
-## MongoDB
-We recommend installing [MongoDB](https://www.mongodb.org/) for the best development experience. All card states will be persisted to a local Mongo database providing a good representation of how cards will work in production.
-
-If Mongo is not installed then it will fallback to an in-memory database and states are lost whenever the application is relaunched.
-
 ## Client State Support
 State support on the client is necessary if there is any user interaction on your card. This interaction will change the `state` which you can check and render differently the next time the card is requested.
 
