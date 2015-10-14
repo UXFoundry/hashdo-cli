@@ -1,5 +1,6 @@
 'use strict';
 var Yeoman = require('yeoman-generator'),
+  Path = require('path'),
   _ = require('lodash');
 
 module.exports = Yeoman.generators.Base.extend({  
@@ -51,8 +52,9 @@ module.exports = Yeoman.generators.Base.extend({
     }
   },
 
-  install: function () {
-    // Nothing to install yet.
+  install: function () {    
+    process.chdir(Path.join(process.cwd(), this.answers.camelCasePackName));
+    
     this.npmInstall();
   }
 });
