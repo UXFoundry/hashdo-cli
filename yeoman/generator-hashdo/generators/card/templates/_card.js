@@ -33,7 +33,7 @@ module.exports = {
   /**
    * Generate or restore view model for template based on inputs and current card state.
    * Update any card state if necessary for subsequent calls to getCardData.
-   * NB: 
+   * NB: Always make the callback otherwise the caller will wait indefinitely for a response.
    *
    * @method getCardData
    * @async
