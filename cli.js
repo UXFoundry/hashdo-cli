@@ -2,7 +2,7 @@ var Cli = module.exports,
   HashDoWeb = require('hashdo-web'),
   Path = require('path'),
   FS = require('fs'),
-  LiveReload = require('express-livereload'),
+  LiveReload = require('livereload'),
   Program = require('commander'),
   Open = require('open'),
   YeomanEnv = require('yeoman-environment'),
@@ -34,9 +34,11 @@ Cli.run = function (processArgv) {
       
       HashDoWeb.init(baseUrl, firebaseUrl, port, process.cwd());
       
-      // Add live reload middleware.
-      LiveReload(HashDoWeb.express, { watchDir: process.cwd() });
-            
+      LiveReload.createServer({
+        exts: ['json', 'less', 'scss', 'sass', 'hbs'],
+        exclusions: [/node_modules/]
+      }).watch(process.cwd());
+      
       // Setup extra web end-points for testing.
       HashDoWeb.hashdo.packs.cards().forEach(function (card) {
         var packDirectory = Path.join(process.cwd(), 'hashdo-' + card.pack);
