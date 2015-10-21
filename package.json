@@ -21,7 +21,7 @@
     "commander": "2.9.0",
     "express-livereload": "0.0.24",
     "handlebars": "4.0.3",
-    "hashdo-web": "0.1.6",
+    "hashdo-web": "0.1.7",
     "lodash": "3.10.1",
     "open": "0.0.5",
     "yeoman-environment": "1.2.7",
