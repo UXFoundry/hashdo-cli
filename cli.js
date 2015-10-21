@@ -29,13 +29,13 @@ Cli.run = function (processArgv) {
       printLogo();
       
       var port = options.port || 4000;
-      var baseUrl = 'http://localhost:' + port
+      var baseUrl = 'http://localhost:' + port;
       var firebaseUrl = 'https://hashdodemo.firebaseio.com/';
       
       HashDoWeb.init(baseUrl, firebaseUrl, port, process.cwd());
       
       // Add live reload middleware.
-      LiveReload(HashDoWeb.express, { watchDir: process.cwd() });
+      LiveReload(HashDoWeb.express, {watchDir: process.cwd(), exclusions: ['node_modules/']});
             
       // Setup extra web end-points for testing.
       HashDoWeb.hashdo.packs.cards().forEach(function (card) {
