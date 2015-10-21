@@ -35,7 +35,7 @@ Cli.run = function (processArgv) {
       HashDoWeb.init(baseUrl, firebaseUrl, port, process.cwd());
       
       // Add live reload middleware.
-      LiveReload(HashDoWeb.express, {watchDir: process.cwd(), exclusions: ['node_modules/']});
+      //LiveReload(HashDoWeb.express, {watchDir: process.cwd(), exclusions: ['node_modules/']});
             
       // Setup extra web end-points for testing.
       HashDoWeb.hashdo.packs.cards().forEach(function (card) {
