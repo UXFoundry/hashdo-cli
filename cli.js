@@ -36,7 +36,7 @@ Cli.run = function (processArgv) {
         exts: ['json', 'less', 'scss', 'sass', 'hbs'],
         exclusions: [/node_modules/]
       }).watch(process.cwd());
-      
+
       HashDoWeb.init(baseUrl, firebaseUrl, port, process.cwd());
       
       // Setup extra web end-points for testing.
