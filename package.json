@@ -1,7 +1,7 @@
 {
   "name": "hashdo-cli",
   "description": "Development command-line interface to generate and test #Do cards.",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "preferGlobal": true,
   "author": "HashDo <info@hashdo.com>",
   "license": "Apache-2.0",
@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "commander": "2.9.0",
-    "handlebars": "4.0.3",
-    "hashdo-web": "^0.1.14",
+    "handlebars": "4.0.4",
+    "hashdo-web": "^0.1.15",
     "livereload": "0.3.7",
     "lodash": "3.10.1",
     "open": "0.0.5",
