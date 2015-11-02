@@ -76,10 +76,10 @@
     var refreshTimer = null;
     {{#each card.inputs}}
     var {{@key}} = document.getElementById('{{@key}}');
-    {{@key}}.value = window.localStorage.getItem('{{@key}}') || '{{this.example}}';
+    {{@key}}.value = window.localStorage.getItem('{{packName}}-{{cardName}}-{{@key}}') || '{{this.example}}';
     {{@key}}.addEventListener('keyup', function () {
       window.clearTimeout(refreshTimer);
-      window.localStorage.setItem('{{@key}}', {{@key}}.value);
+      window.localStorage.setItem('{{packName}}-{{cardName}}-{{@key}}', {{@key}}.value);
       refreshTimer = window.setTimeout(function () {
         setCardSource();
       }, 1200);
