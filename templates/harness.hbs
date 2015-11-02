@@ -31,7 +31,9 @@
       </div>
     </div>
   </body>
-  <script>    
+  <script>
+    var localStorageKeyPrefix = '{{packName}}-{{cardName}}-';
+
     function setCardSource() {
       var frame = document.getElementById('cardFrame');
       var link = document.getElementById('cardLink');
@@ -76,10 +78,10 @@
     var refreshTimer = null;
     {{#each card.inputs}}
     var {{@key}} = document.getElementById('{{@key}}');
-    {{@key}}.value = window.localStorage.getItem('{{packName}}-{{cardName}}-{{@key}}') || '{{this.example}}';
+    {{@key}}.value = window.localStorage.getItem(localStorageKeyPrefix + '{{@key}}') || '{{this.example}}';
     {{@key}}.addEventListener('keyup', function () {
       window.clearTimeout(refreshTimer);
-      window.localStorage.setItem('{{packName}}-{{cardName}}-{{@key}}', {{@key}}.value);
+      window.localStorage.setItem(localStorageKeyPrefix + '{{@key}}', {{@key}}.value);
       refreshTimer = window.setTimeout(function () {
         setCardSource();
       }, 1200);
