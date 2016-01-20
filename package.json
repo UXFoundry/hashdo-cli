@@ -1,7 +1,7 @@
 {
   "name": "hashdo-cli",
   "description": "Development command-line interface to generate and test #Do cards.",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "preferGlobal": true,
   "author": "HashDo <info@hashdo.com>",
   "license": "Apache-2.0",
@@ -20,12 +20,13 @@
   "dependencies": {
     "commander": "2.9.0",
     "handlebars": "4.0.5",
-    "hashdo-web": "0.1.16",
+    "hashdo-db-mongo": "0.2.1",
+    "hashdo-web": "0.1.18",
     "livereload": "0.4.0",
-    "lodash": "3.10.1",
+    "lodash": "4.0.0",
     "open": "0.0.5",
-    "yeoman-environment": "1.3.0",
-    "yeoman-generator": "0.21.1"
+    "yeoman-environment": "1.5.2",
+    "yeoman-generator": "0.22.4"
   },
   "devDependencies": {},
   "subdomain": "hashdo",

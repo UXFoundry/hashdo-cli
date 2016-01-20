@@ -37,6 +37,9 @@ Cli.run = function (processArgv) {
         exclusions: [/node_modules/]
       }).watch(process.cwd());
 
+      // temp
+      HashDoWeb.hashdo.db = require('hashdo-db-mongo');
+
       HashDoWeb.init(baseUrl, firebaseUrl, port, process.cwd());
       
       // Setup extra web end-points for testing.
