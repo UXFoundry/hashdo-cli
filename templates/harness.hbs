@@ -34,11 +34,12 @@
   <script>
     var localStorageKeyPrefix = '{{packName}}-{{cardName}}-';
 
-    function setCardSource() {
+    function setCardSource(tokenLocalStorageKey) {
       var frame = document.getElementById('cardFrame');
       var link = document.getElementById('cardLink');
       var src = '/{{packName}}/{{cardName}}/?';
       var secureInputs = {};
+      var cachedToken = window.localStorage.getItem(tokenLocalStorageKey);
       
       function setSourceString() {
         {{#each card.inputs}}
@@ -47,8 +48,12 @@
         {{/unless}}
         {{/each}}
         
-        if (this.responseText) {
+        if (cachedToken) {
+          src += 'token=' + cachedToken;
+        }
+        else if (this.responseText) {
           var token = JSON.parse(this.responseText).success;
+          window.localStorage.setItem(tokenLocalStorageKey, token);
           src += 'token=' + token;
         }
         
@@ -63,7 +68,7 @@
       {{/if}}
       {{/each}}
       
-      if (Object.keys(secureInputs).length > 0) {
+      if (!cachedToken && Object.keys(secureInputs).length > 0) {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/{{packName}}/{{cardName}}', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
@@ -75,6 +80,18 @@
       }
     }
     
+    function generateTokenLocalStorageKey() {
+      var key = '';
+      
+      {{#each card.inputs}}
+      {{#if this.secure}}
+      key += document.getElementById('{{@key}}').value;
+      {{/if}}
+      {{/each}}
+      
+      return localStorageKeyPrefix + window.btoa(key);
+    }
+    
     var refreshTimer = null;
     {{#each card.inputs}}
     var {{@key}} = document.getElementById('{{@key}}');
@@ -83,11 +100,13 @@
       window.clearTimeout(refreshTimer);
       window.localStorage.setItem(localStorageKeyPrefix + '{{@key}}', {{@key}}.value);
       refreshTimer = window.setTimeout(function () {
-        setCardSource();
+        var tokenLocalStorageKey = generateTokenLocalStorageKey();
+        setCardSource(tokenLocalStorageKey);
       }, 1200);
     });
     {{/each}}
     
-    setCardSource();
+    var tokenLocalStorageKey = generateTokenLocalStorageKey();
+    setCardSource(tokenLocalStorageKey);
   </script>
 </html>
