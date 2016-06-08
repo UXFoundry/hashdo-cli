@@ -4,9 +4,9 @@ var Yeoman = require('yeoman-generator'),
   Path = require('path'),
   _ = require('lodash');
   
-module.exports = Yeoman.generators.Base.extend({
+module.exports = Yeoman.Base.extend({
   constructor: function () {
-    Yeoman.generators.Base.apply(this, arguments);
+    Yeoman.Base.apply(this, arguments);
     
     this.option('hideGreeting', { type: Boolean, defaults: false, hide: true });
   },
