@@ -10,8 +10,6 @@ module.exports = Yeoman.generators.Base.extend({
   },
   
   prompting: function () {
-    var done = this.async();
-
     // Have Yeoman greet the user.
     if (!this.options.hideGreeting) {
       var Chalk = require('chalk'),
@@ -34,11 +32,9 @@ module.exports = Yeoman.generators.Base.extend({
       default: 'My demonstration #Do card pack.'
     }];
 
-    this.prompt(questions, function (answers) {
+    return this.prompt(questions).then(function (answers) {
       this.answers = answers;
       this.answers.camelCasePackName = 'hashdo-' + _.camelCase(answers.packName);
-      
-      done();
     }.bind(this));
   },
 

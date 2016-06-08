@@ -12,7 +12,6 @@ module.exports = Yeoman.generators.Base.extend({
   },
   
   prompting: function () {
-    var done = this.async();
     var inputs = [];
 
     // Have Yeoman greet the user.
@@ -153,7 +152,7 @@ module.exports = Yeoman.generators.Base.extend({
     var askForInputs = function () {      
       console.log();  // Separate question blocks.
       
-      this.prompt(inputQuestions, function (answers) {
+      return this.prompt(inputQuestions).then(function (answers) {
         // If it's a built-in input, augment the details onto it before adding.
         if (answers.name !== 'Custom') {
           this._augmentBuiltInAnswer(answers);
@@ -165,17 +164,15 @@ module.exports = Yeoman.generators.Base.extend({
         
         if (answers.moreInputs) {
           delete answers.moreInputs;
-          askForInputs();
+          return askForInputs();
         }
         else {
           this.answers.inputs = inputs;
-          
-          done();
         }
       }.bind(this));
     }.bind(this);
 
-    this.prompt(questions, function (answers) {
+    return this.prompt(questions).then(function (answers) {
       // Store the standard answers and make some new modified props.      
       this.answers = answers;
       this.answers.camelCaseCardName = _.camelCase(answers.cardName);
@@ -187,10 +184,7 @@ module.exports = Yeoman.generators.Base.extend({
       this.answers.inputs = [];
       
       if (answers.haveInputs) {
-        askForInputs();
-      }
-      else {
-        done(); 
+        return askForInputs();
       }
     }.bind(this));
   },
