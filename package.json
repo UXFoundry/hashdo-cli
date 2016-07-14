@@ -20,8 +20,7 @@
   "dependencies": {
     "commander": "2.9.0",
     "handlebars": "4.0.5",
-    "hashdo-db-mongo": "0.3.12",
-    "hashdo-web": "0.1.60",
+    "hashdo-web": "0.1.61",
     "is-buffer": "1.1.3",
     "livereload": "0.4.1",
     "lodash": "4.13.1",
